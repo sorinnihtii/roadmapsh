@@ -3,33 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/output.css">
+    <link rel="stylesheet" href="src/output.css" />
     <title>CV Model</title>
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Basic HTML + Tailwindcss Website Project" />
+    <meta
+      name="description"
+      content="Basic HTML + Tailwindcss Website Project"
+    />
     <meta name="author" content="Nihtii Sorin" />
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Nihtii Sorin - Frontend Developer" />
     <meta property="og:description" content="My first tailwind mini project" />
-    <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVgHWDyjwN9qZsPChFzc5PRfOOOqbfgXqR3w&s" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://austinhill.dev" />
-    <!-- Favicon -->
-    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVgHWDyjwN9qZsPChFzc5PRfOOOqbfgXqR3w&s" type="image/x-icon" />
   </head>
+
   <body class="border-2 overflow-auto m-2">
 
-    <!-- 1/3 -->
     <header class="flex flex-col h-70 border-b-2">
+
       <div class="m-6 mb-0 flex gap-10">
+        <!-- Profile -->
         <div class="flex align-middle items-center">
           <img
             src="https://static.vecteezy.com/system/resources/thumbnails/005/544/718/small/profile-icon-design-free-vector.jpg"
             alt="pfp"
             class="size-8 border mr-3"
           />
-          <p class="font-semibold text-[clamp(0.75rem,1.5vw,2rem)]">Nihtii Sorin</p>
+          <p class="font-semibold text-[clamp(0.75rem,1.5vw,2rem)]">
+            Nihtii Sorin
+          </p>
         </div>
+
+        <!-- Navbar -->
         <nav class="flex ml-auto">
           <ul
             class="flex flex-row-reverse gap-2 text-[clamp(0.65rem,1vw,1.5rem)] font-semibold flex-wrap self-center"
@@ -41,86 +46,125 @@
           </ul>
         </nav>
       </div>
-      <div class="flex flex-col my-auto gap-2 items-center">
-        <h1 class="text-[clamp(0.75rem,6vw,2.5rem)]">Frontend Developer</h1>
-        <p class="text-gray-400 text-[clamp(0.75rem,1vw,1.5rem)]">Basic HTML Website Project</p>
+
+      <!-- Title -->
+      <div class="flex flex-col my-auto gap-1 items-center">
+        <h1 class="text-[clamp(0.75rem,6vw,2.5rem)] font-semibold">
+          Frontend Developer
+        </h1>
+        <p class="text-gray-400 text-[clamp(0.6rem,1vw,1.5rem)]">
+          Basic HTML Website Project
+        </p>
       </div>
     </header>
-    <main>
-      <!-- 2/3 -->
-      <section class="flex">
-        <!-- PROJECTS -->
-        <section class="w-sm p-4">
-          <h2 class="mb-2 font-semibold text-[clamp(0.9rem,1.25vw,2rem)]">Projects</h2>
-          <ul class="flex flex-col gap-1 text-[clamp(0.75rem,1vw,1.5rem)]">
-            <li class="border-b">HTML Only Portfolio</li>
-            <li class="border-b">Calculator</li>
-            <li class="border-b">Quiz App</li>
-            <li class="border-b">Countdown Timer</li>
-            <li class="border-b">Product Upcoming Page</li>
-          </ul>
-        </section>
 
-        <!-- WORK EXPERIENCE -->
-        <section class="w-2xl p-4 border-x-2">
-          <h2 class="mb-2 font-semibold text-[clamp(0.9rem,1.25vw,2rem)]">Work Experience</h2>
-          <section class="border-b pb-4">
-            <h4 class="font-semibold text-[clamp(0.75rem,1vw,1.5rem)]">roadmap.sh</h4>
-            <p class="text-[clamp(0.75rem,1vw,1.5rem)]">Solved all the frontend projects</p>
-            <a href="" class="text-[clamp(0.5rem,0.75vw,1rem)] text-blue-500 font-semibold"
-              >Visit my Profile</a
-            >
-          </section>
-          <section class="pt-4">
-            <h4 class="font-semibold text-[clamp(0.75rem,1vw,1.5rem)]">OpenSource Work</h4>
-            <p class="text-[clamp(0.75rem,1vw,1.5rem)]">
-              Contributed to 50 opensource projects. Made my own projects with
-              200 GitHub Stars.
-            </p>
-            <a href="" class="text-[clamp(0.5rem,0.75vw,1rem)] text-blue-500 font-semibold"
-              >Visit my GitHub Profile</a
-            >
-          </section>
-        </section>
-
-        <!-- EDUCATION -->
-        <section class="w-xl p-4">
-          <h2 class="font-semibold text-[clamp(0.9rem,1.25vw,2rem)] mb-2">Education</h2>
-          <p class="text-[clamp(0.75rem,1vw,1.5rem)]">
-            Graduated with 3,76 out of 4 CGPA. Won Acme Hackathon. Organized 30
-            sessions.
-          </p>
-        </section>
+    <main class="flex">
+      <!-- PROJECTS -->
+      <section class="w-md p-4">
+        <h2 class="mb-2 font-semibold text-[clamp(0.9rem,1.25vw,2rem)]">
+          Projects
+        </h2>
+        <ul class="flex flex-col gap-2 text-[clamp(0.6rem,1vw,1.5rem)]">
+          <li class="border-b">HTML Only Portfolio</li>
+          <li class="border-b">Calculator</li>
+          <li class="border-b">Quiz App</li>
+          <li class="border-b">Countdown Timer</li>
+          <li class="border-b">Product Upcoming Page</li>
+        </ul>
       </section>
 
-      <!-- 3/3 -->
-      <section class="flex flex-col p-4 border-t-2">
-        <h2 class="mb-5 font-semibold text-[clamp(0.9rem,1.25vw,2rem)]">Reviews from my Teachers</h2>
-        <ul class="flex gap-5 mx-2 text-[clamp(0.5rem,1vw,1.5rem)]">
-          <li class="p-4 border rounded-3xl max-w-[23vw]">
-            <p>
-              John doe was a brilliant studentl always stood out with his
-              assignments.
-            </p>
-            <p class="text-gray-500">Jane Doe<br />Assistant Proffessor</p>
-          </li>
-          <li class="p-4 border rounded-3xl max-w-[23vw]">
-            <p>
-              John doe was a brilliant studentl always stood out with his
-              assignments.
-            </p>
-            <p class="text-gray-500">Jane Doe<br />Assistant Proffessor</p>
-          </li>
-          <li class="p-4 border rounded-3xl max-w-[23vw]">
-            <p>
-              John doe was a brilliant studentl always stood out with his
-              assignments.
-            </p>
-            <p class="text-gray-500">Jane Doe<br />Assistant Proffessor</p>
-          </li>
+      <!-- WORK EXPERIENCE -->
+      <section class="w-2xl p-4 border-x-2">
+        <h2 class="mb-2 font-semibold text-[clamp(0.9rem,1.25vw,2rem)]">
+          Work Experience
+        </h2>
+
+        <article class="border-b pb-4">
+          <h4 class="font-semibold text-[clamp(0.75rem,1vw,1.5rem)]">
+            roadmap.sh
+          </h4>
+          <p class="text-[clamp(0.6rem,1vw,1.5rem)]">
+            Solved all the frontend projects
+          </p>
+          <a
+            href=""
+            class="text-[clamp(0.5rem,0.75vw,1rem)] text-blue-500 font-semibold"
+            >Visit my Profile</a
+          >
+        </article>
+
+        <article class="pt-4">
+          <h4 class="font-semibold text-[clamp(0.75rem,1vw,1.5rem)]">
+            OpenSource Work
+          </h4>
+          <p class="text-[clamp(0.6rem,1vw,1.5rem)]">
+            Contributed to 50 opensource projects. Made my own projects with 200
+            GitHub Stars.
+          </p>
+          <a
+            href=""
+            class="text-[clamp(0.5rem,0.75vw,1rem)] text-blue-500 font-semibold"
+            >Visit my GitHub Profile</a
+          >
+        </article>
+      </section>
+
+      <!-- EDUCATION -->
+      <section class="w-xl p-4">
+        <h2 class="font-semibold text-[clamp(0.9rem,1.25vw,2rem)] mb-2">
+          Education
+        </h2>
+        <p class="text-[clamp(0.6rem,1vw,1.5rem)]">
+          Graduated with 3,76 out of 4 CGPA. Won Acme Hackathon. Organized 30
+          sessions.
+        </p>
+        <h6 class="mt-4 mb-2 text-[clamp(0.6rem,1vw,1.5rem)]">
+          Courses I took:
+        </h6>
+        <ul class="flex flex-col text-[clamp(0.5rem,1vw,1.5rem)]">
+          <li>- Object Oriented Programming</li>
+          <li>- Data Structures and Algorithms</li>
+          <li>- Web Engineering</li>
+          <li>- Artificial Intelligence</li>
+          <li>- Human Computer Interaction</li>
+          <li>- Computer Graphics</li>
+          <li>- Database Management Systems</li>
+          <li>- Distributed Database Systems</li>
+          <li>- Discreet Mathematics</li>
         </ul>
-        <p class="mt-20 mb-5 mx-auto text-[clamp(0.5rem,1vw,1.5rem)]">all rights reserved 2025</p>
       </section>
     </main>
+
+    <footer class="flex flex-col p-4 border-t-2">
+      <h2 class="mb-5 font-semibold text-[clamp(0.9rem,1.25vw,2rem)]">
+        Reviews from my Teachers
+      </h2>
+      <ul class="flex gap-5 mx-2 text-[clamp(0.5rem,1vw,1.5rem)]">
+        <li class="p-4 border rounded-3xl max-w-[23vw]">
+          <p>
+            John doe was a brilliant studentl always stood out with his
+            assignments.
+          </p>
+          <p class="text-gray-500">Jane Doe<br />Assistant Proffessor</p>
+        </li>
+        <li class="p-4 border rounded-3xl max-w-[23vw]">
+          <p>
+            John doe was a brilliant studentl always stood out with his
+            assignments.
+          </p>
+          <p class="text-gray-500">Jane Doe<br />Assistant Proffessor</p>
+        </li>
+        <li class="p-4 border rounded-3xl max-w-[23vw]">
+          <p>
+            John doe was a brilliant studentl always stood out with his
+            assignments.
+          </p>
+          <p class="text-gray-500">Jane Doe<br />Assistant Proffessor</p>
+        </li>
+      </ul>
+      <p class="mt-20 mb-5 mx-auto text-[clamp(0.5rem,1vw,1.5rem)]">
+        all rights reserved 2025
+      </p>
+    </footer>
   </body>
 </html>
