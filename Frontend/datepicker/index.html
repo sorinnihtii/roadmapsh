@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Date Picker</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Date Picker UI made with Tailwindcss" />
+    <meta name="author" content="Nihtii Sorin" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Nihtii Sorin - Frontend Developer" />
+    <meta property="og:description" content="My third tailwind mini project" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="flex h-screen w-screen p-4">
+    <div class="flex flex-col m-auto w-xl aspect-3/2">
+      <header class="flex w-full h-[15%] border-2 items-center">
+        <div class="w-full p-1 pl-4 text-md">dd-mm-yyyy</div>
+        <button
+          class="flex ml-auto justify-center h-full items-center aspect-square cursor-pointer border-l-2 text-xl bg-purple-400"
+        >
+          <i class="fa fa-calendar"></i>
+        </button>
+      </header>
+      <main class="h-full">
+        <section class="flex flex-col h-[25%] gap-2 mt-1 p-1 w-full border-2 bg-amber-300">
+          <div class="grid grid-cols-[1fr_2fr_1fr] w-full h-[50%]">
+            <div class="flex items-center justify-center">
+              <div
+                class="h-2 aspect-4/3 bg-black [clip-path:polygon(50%_0%,0%_100%,100%_100%)] transform-[rotate(-90deg)]"
+              ></div>
+            </div>
+
+            <div class="my-auto text-center text-lg font-semibold">
+              December 2025 
+            </div>
+
+            <div class="flex items-center justify-center">
+              <div
+                class="h-2 aspect-4/3 bg-black [clip-path:polygon(50%_0%,0%_100%,100%_100%)] transform-[rotate(90deg)]"
+              ></div>
+            </div>
+          </div>
+
+          <div
+            class="grid grid-cols-7 h-auto mt-auto mb-1 text-center items-center text-sm font-semibold"
+          >
+            <p>S</p>
+            <p>M</p>
+            <p>T</p>
+            <p>W</p>
+            <p>T</p>
+            <p>F</p>
+            <p>S</p>
+          </div>
+        </section>
+
+        <section class="w-full h-full">
+          <table
+            class="w-full h-full border-2 mt-px text-center bg-purple-50 [&_td]:border [&_tr]:h-auto [&_td]:content-center [&_td]:text-sm"
+          >
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+                <td>16</td>
+                <td>17</td>
+              </tr>
+              <tr>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+              </tr>
+              <tr>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
