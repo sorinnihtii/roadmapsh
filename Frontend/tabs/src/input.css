@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+body {
+  background: linear-gradient(220deg, rgb(234, 191, 51), transparent 75%),
+    linear-gradient(60deg, rgb(124, 223, 71), transparent 75%);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: flex;
+  flex-direction: column;
+  font-size: small;
+}
+
+.tab-panel.active > h6 {
+  font-weight: bold;
+  font-size: large;
+}
+
+.tab-button {
+  padding: 5px 10px;
+  font-size: smaller;
+}
+
+.tab-button.active {
+  border-bottom: solid 2px rgb(0, 94, 255);
+  font-weight: bold;
+  color: rgb(0, 94, 255);
+}
