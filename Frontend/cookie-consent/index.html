@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/output.css" />
+    <title>Cookie Consent</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Simple Cookie Consent Pop-up" />
+    <meta name="author" content="Nihtii Sorin" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Nihtii Sorin - Frontend Developer" />
+    <meta property="og:description" content="My 5th tailwind mini project" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="flex w-screen h-screen justify-center items-end">
+    <div
+      id="popup"
+      class="flex flex-col relative gap-3 p-4 mb-20 w-md bg-black text-white rounded-xs animate-popup"
+    >
+      <h6 class="text-xl font-semibold">We use cookies</h6>
+      <p class="">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+        iure dolor sed tempora labore doloribus nesciunt dicta ipsum dolores ab
+        fugiat itaque, placeat, minus commodi quasi. Ab nemo provident minus.
+      </p>
+      <div class="flex gap-1 text-black text-sm">
+        <button
+          id="accept"
+          class="px-2 py-0.5 bg-yellow-300 font-semibold rounded-xs"
+        >
+          I agree
+        </button>
+        <button
+          id="reject"
+          class="px-2 py-0.5 bg-yellow-300 font-semibold rounded-xs"
+        >
+          I decline
+        </button>
+      </div>
+    </div>
+    <div id="alert"></div>
+    <script src="src/script.js"></script>
+  </body>
+</html>

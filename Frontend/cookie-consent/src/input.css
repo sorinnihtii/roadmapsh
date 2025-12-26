@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+.hidden {
+  display: none;
+}
+
+@theme {
+  --animate-popup: popup 1s forwards ease-out;
+
+  @keyframes popup {
+    from {
+      opacity: 0%;
+      transform: translateY(-100px);
+    }
+    to {
+      opacity: 100%;
+      transform: translateY(0);
+    }
+  }
+}
+
+@theme {
+  --animate-away: away 0.75s forwards ease-in;
+
+  @keyframes away {
+    from {
+      opacity: 100%;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0%;
+      transform: translateY(-100px);
+    }
+  }
+}
