@@ -4,6 +4,13 @@ function saveConsent(value) {
 
 const consent = localStorage.getItem("cookieConsent");
 const popup = document.getElementById("popup");
+const reset = document.getElementById("reset");
+
+reset.addEventListener("click", () => {
+  alert("cookies reset successfully, refresh the page");
+  localStorage.removeItem("cookieConsent");
+  reset.remove();
+});
 
 if (!consent) {
   const accept = document.getElementById("accept");

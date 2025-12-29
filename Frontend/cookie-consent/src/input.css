@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-.hidden {
-  display: none;
-}
-
 @theme {
   --animate-popup: popup 1s forwards ease-out;
 

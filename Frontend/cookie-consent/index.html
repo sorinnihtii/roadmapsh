@@ -14,28 +14,29 @@
     <meta property="og:type" content="website" />
   </head>
   <body class="flex w-screen h-screen justify-center items-end">
+    <button id="reset" class="absolute cursor-pointer font-bold mb-2 text-xs">
+      RESET
+    </button>
     <div
       id="popup"
-      class="flex flex-col relative gap-3 p-4 mb-20 w-md bg-black text-white rounded-xs animate-popup"
+      class="flex flex-col relative gap-3 p-4 mb-20 w-md bg-transparent border-black border-2 rounded-sm animate-popup"
     >
-      <h6 class="text-xl font-semibold">We use cookies</h6>
-      <p class="">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-        iure dolor sed tempora labore doloribus nesciunt dicta ipsum dolores ab
-        fugiat itaque, placeat, minus commodi quasi. Ab nemo provident minus.
+      <h6 class="text-xl font-semibold text-black">We use cookies</h6>
+      <p class="text-[#333]">
+        We use cookies and other tracking technologies to improve your browsing
+        experience on our website, to show personalized content and targeted
+        ads, to analyze our website traffic, and to understand where our
+        visitors are coming from.
       </p>
-      <div class="flex gap-1 text-black text-sm">
-        <button
-          id="accept"
-          class="px-2 py-0.5 bg-yellow-300 font-semibold rounded-xs"
-        >
-          I agree
+      <div class="flex gap-1.5 text-black text-xs font-normal">
+        <button id="accept" class="px-2.5 py-1 bg-amber-300 rounded-xs border">
+          Accept all
         </button>
         <button
           id="reject"
-          class="px-2 py-0.5 bg-yellow-300 font-semibold rounded-xs"
+          class="px-2.5 py-1 bg-transparent rounded-xs border"
         >
-          I decline
+          Reject all
         </button>
       </div>
     </div>
