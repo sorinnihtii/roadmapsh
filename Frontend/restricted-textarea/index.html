@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/output.css" />
+    <title>Restricted text area</title>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Simple text area with word limit and counter"
+    />
+    <meta name="author" content="Nihtii Sorin" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Nihtii Sorin - Frontend Developer" />
+    <meta property="og:description" content="My 6th tailwind mini project" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="flex flex-col justify-center items-center w-screen h-screen">
+    <div class="flex flex-col justify-center items-center gap-1.5">
+      <h2 class="font-semibold text-lg">Write your message</h2>
+      <div id="container" class="flex flex-col p-3 gap-1 border-2 rounded-xl">
+        <textarea
+          id="input"
+          rows="5"
+          cols="50"
+          placeholder="start typing..."
+          autofocus
+          maxlength="250"
+          focus="none"
+          spellcheck="false"
+          class="rounded focus:outline-none resize-none"
+        ></textarea>
+        <div class="flex gap-1 ml-auto">
+          <p id="currentLength">0</p>
+          <p>/</p>
+          <p id="maxLength"></p>
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>

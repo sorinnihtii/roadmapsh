@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+.maxed {
+  border: 2px red solid;
+  color: red;
+}
+
+#input {
+  scrollbar-color: #ddd white;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
