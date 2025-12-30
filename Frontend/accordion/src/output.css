@@ -245,6 +245,9 @@
     border-style: var(--tw-border-style);
     border-width: 2px;
   }
+  .border-black {
+    border-color: var(--color-black);
+  }
   .bg-black {
     background-color: var(--color-black);
   }
@@ -282,7 +285,7 @@
   height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: opacity 0.6s ease-out;
+  transition-duration: 0.5s;
   position: absolute;
 }
 .dropdown.shown {
@@ -291,8 +294,7 @@
   position: relative;
 }
 .drop-button > div {
-  transition-duration: 0.6s;
-  transition-timing-function: ease-out;
+  transition-duration: 0.5s;
 }
 .drop-button.shown > div {
   transform: rotate(0);
