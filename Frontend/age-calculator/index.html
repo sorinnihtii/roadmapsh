@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/output.css" />
+    <title>Age calculator</title>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Simple age calculator made with tailwind and luxon"
+    />
+    <meta name="author" content="Nihtii Sorin" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Nihtii Sorin - Frontend Developer" />
+    <meta property="og:description" content="My 8th tailwind mini project" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="flex flex-col justify-center items-center w-screen h-screen">
+    <main
+      class="flex flex-col justify-center items-center p-14 gap-10 border-2 rounded-md"
+    >
+      <h1 class="p-3 text-3xl font-semibold border-b border-gray-300">
+        Age calculator
+      </h1>
+      <form class="flex flex-col gap-2 w-full">
+        <div class="flex flex-col">
+          <label for="bday" class="text-md font-semibold"
+            >Insert your birthdate here:</label
+          >
+          <input
+            type="date"
+            name="bday"
+            id="bday"
+            autofocus
+            class="border-3 rounded-xs text-gray-900 gradientBorder"
+          />
+        </div>
+        <input
+          type="submit"
+          name="submit"
+          id="submit"
+          value="Calculate"
+          class="self-center w-fit px-8 py-0.5 mt-3 rounded-xs cursor-pointer text-gray-900 gradientr"
+        />
+      </form>
+      <p
+        id="yourAge"
+        class="py-1 px-2 border-t border-gray-200 text-gray-600 font-lighter"
+      >
+        You are: __ years old
+      </p>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+    <script src="src/script.js"></script>
+  </body>
+</html>
