@@ -1,0 +1,127 @@
+[
+  {
+    "id": "1",
+    "question": "What is the difference between var, let and const?",
+    "answer": "The main differences between var, let, and const in JavaScript are in their scope, hoisting behavior, and whether they allow reassignment or redeclaration."
+  },
+  {
+    "id": "2",
+    "question": "What is hoisting in JavaScript?",
+    "answer": "Hoisting is JavaScript's behavior of moving variable and function declarations to the top of their containing scope during compilation, allowing them to be referenced before they are defined."
+  },
+  {
+    "id": "3",
+    "question": "What is the difference between == and ===?",
+    "answer": "The == operator compares values with type coercion, while === compares both value and type without coercion, making it more predictable and safer to use."
+  },
+  {
+    "id": "4",
+    "question": "What are arrow functions?",
+    "answer": "Arrow functions are a shorter syntax for writing functions in JavaScript and differ from regular functions mainly in how they handle the this keyword."
+  },
+  {
+    "id": "5",
+    "question": "What is the this keyword?",
+    "answer": "The this keyword refers to the object that is executing the current function, and its value depends on how the function is called."
+  },
+  {
+    "id": "6",
+    "question": "What is a closure in JavaScript?",
+    "answer": "A closure is created when a function retains access to variables from its outer scope even after the outer function has finished executing."
+  },
+  {
+    "id": "7",
+    "question": "What is the difference between null and undefined?",
+    "answer": "undefined means a variable has been declared but not assigned a value, while null is an intentional assignment representing no value."
+  },
+  {
+    "id": "8",
+    "question": "What are JavaScript promises?",
+    "answer": "Promises represent the eventual completion or failure of an asynchronous operation and allow handling asynchronous code in a more readable way."
+  },
+  {
+    "id": "9",
+    "question": "What is async/await?",
+    "answer": "Async/await is syntax built on top of promises that allows writing asynchronous code that looks and behaves like synchronous code."
+  },
+  {
+    "id": "10",
+    "question": "What is event bubbling?",
+    "answer": "Event bubbling is the process by which an event starts at the target element and propagates upward through its parent elements in the DOM."
+  },
+  {
+    "id": "11",
+    "question": "What is event delegation?",
+    "answer": "Event delegation is a technique where a single event listener is added to a parent element to manage events for multiple child elements."
+  },
+  {
+    "id": "12",
+    "question": "What is the DOM?",
+    "answer": "The Document Object Model (DOM) is a programming interface that represents the structure of an HTML or XML document as a tree of objects."
+  },
+  {
+    "id": "13",
+    "question": "What is a pure function?",
+    "answer": "A pure function always returns the same output for the same input and does not cause any side effects such as modifying external variables."
+  },
+  {
+    "id": "14",
+    "question": "What is the difference between map, filter, and reduce?",
+    "answer": "map transforms each element in an array, filter selects elements based on a condition, and reduce combines all elements into a single value."
+  },
+  {
+    "id": "15",
+    "question": "What is destructuring in JavaScript?",
+    "answer": "Destructuring is a syntax that allows extracting values from arrays or properties from objects into distinct variables."
+  },
+  {
+    "id": "16",
+    "question": "What are template literals?",
+    "answer": "Template literals allow embedding expressions inside strings using backticks and provide easier string interpolation and multiline strings."
+  },
+  {
+    "id": "17",
+    "question": "What is the spread operator?",
+    "answer": "The spread operator (...) allows expanding elements of an iterable like an array or object into individual elements."
+  },
+  {
+    "id": "18",
+    "question": "What is the rest operator?",
+    "answer": "The rest operator (...) collects multiple elements into a single array or object and is often used in function parameters."
+  },
+  {
+    "id": "19",
+    "question": "What is the difference between synchronous and asynchronous code?",
+    "answer": "Synchronous code executes line by line and blocks execution, while asynchronous code allows other operations to run before completion."
+  },
+  {
+    "id": "20",
+    "question": "What is the call stack?",
+    "answer": "The call stack is a data structure that keeps track of function calls in JavaScript and manages their execution order."
+  },
+  {
+    "id": "21",
+    "question": "What is the event loop?",
+    "answer": "The event loop continuously checks the call stack and message queue to determine when queued tasks can be executed."
+  },
+  {
+    "id": "22",
+    "question": "What are JavaScript modules?",
+    "answer": "JavaScript modules allow code to be split into reusable files using import and export statements."
+  },
+  {
+    "id": "23",
+    "question": "What is immutability?",
+    "answer": "Immutability means that data cannot be changed after it is created, which helps prevent unexpected side effects."
+  },
+  {
+    "id": "24",
+    "question": "What is debouncing?",
+    "answer": "Debouncing limits how often a function is executed by delaying its invocation until a specified time has passed."
+  },
+  {
+    "id": "25",
+    "question": "What is throttling?",
+    "answer": "Throttling ensures a function is executed at most once within a specified time interval."
+  }
+]
