@@ -7,7 +7,7 @@ const BackContent = ({ questionID }) => {
     return <p>ERROR: Question not found!</p>;
   }
   return (
-    <p className="max-w-xs max-h-full text-center font-bold text-xl">
+    <p className="max-w-xs max-h-full text-center text-xl">
       {question.answer}
     </p>
   );
