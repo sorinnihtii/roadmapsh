@@ -3,26 +3,26 @@ import FrontContent from "./frontContent";
 import BackContent from "./BackContent";
 import questions from "./questions.json";
 
+const questionCount = questions.length;
+const percentageJump = 100 / questionCount;
+
 function App() {
   const [isFlipped, setIsFlipped] = useState(false);
   const [showAnswer, setShowAnswer] = useState(false);
   const [progress, setProgress] = useState(1);
 
-  const questionCount = questions.length;
-  const percentageJump = 100 / questionCount;
-
   const delay = (ms) => new Promise((res) => setTimeout(res, ms));
   const [isAnimating, setIsAnimating] = useState(false);
 
   const handleNext = async () => {
-    if (isAnimating || progress == questionCount) return;
+    if (isAnimating || progress == 25) return;
     setIsAnimating(true);
-    setIsFlipped(!isFlipped);
+    setIsFlipped((prev) => !prev);
     await delay(400);
     if (showAnswer) {
       setShowAnswer(false);
     }
-    setProgress(progress + 1);
+    setProgress((prev) => prev + 1);
     await delay(400);
     setIsAnimating(false);
   };
@@ -30,12 +30,12 @@ function App() {
   const handlePrevious = async () => {
     if (isAnimating || progress == 1) return;
     setIsAnimating(true);
-    setIsFlipped(!isFlipped);
+    setIsFlipped((prev) => !prev);
     await delay(400);
     if (showAnswer) {
       setShowAnswer(false);
     }
-    setProgress(progress - 1);
+    setProgress((prev) => prev - 1);
     await delay(400);
     setIsAnimating(false);
   };
@@ -43,26 +43,11 @@ function App() {
   const handleAnswer = async () => {
     if (isAnimating) return;
     setIsAnimating(true);
-    setIsFlipped(!isFlipped);
+    setIsFlipped((prev) => !prev);
     await delay(400);
-    setShowAnswer(!showAnswer);
+    setShowAnswer((prev) => !prev);
     await delay(400);
     setIsAnimating(false);
-  };
-
-  const isNotInteger = (value) => !/^-?\d+$/.test(value);
-
-  const handleInput = (e) => {
-    if (e.target.value < 1) {
-      setProgress(1);
-      return;
-    }
-    if (e.target.value > questionCount) {
-      setProgress(questionCount);
-      return;
-    }
-    if (isNotInteger(e.target.value)) return;
-    setProgress(e.target.value);
   };
 
   return (
@@ -75,20 +60,15 @@ function App() {
           ></div>
           <p
             style={{ marginLeft: `${progress * percentageJump}%` }}
-            className="slow-transition absolute left-1.5 text-center text-sm"
+            className="slow-transition absolute left-1.5 text-center text-sm cursor-default"
           >
             {progress * percentageJump}%
           </p>
         </div>
         <div className="flex justify-center items-center mr-1 w-25 text-center text-sm border border-four rounded-md">
-          <input
-            className="w-4 text-right mr-1 focus:outline-none"
-            type="text"
-            placeholder={progress}
-            max={questionCount}
-            onChange={handleInput}
-          />
-          <p>of {questionCount}</p>
+          <p className="cursor-default">
+            {progress} of {questionCount}
+          </p>
         </div>
       </header>
       <main className="flex flex-col p-1.5 gap-2 items-center justify-center border-2 border-three rounded-lg">
@@ -122,7 +102,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-3 w-full px-4 py-2 text-md rounded-md bg-one text-four">
+        <div className="flex w-full px-4 py-2 text-md rounded-md bg-one text-four">
           <button
             onClick={handlePrevious}
             className="flex gap-1 items-center justify-start cursor-pointer"
@@ -130,7 +110,7 @@ function App() {
             <p>&#60;</p>
             <p>Previous</p>
           </button>
-          <button onClick={handleAnswer} className="cursor-pointer">
+          <button onClick={handleAnswer} className="mx-auto cursor-pointer">
             {!showAnswer ? `Show Answer` : `Show Question`}
           </button>
           <button
