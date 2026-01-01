@@ -32,6 +32,9 @@ function App() {
     setIsAnimating(true);
     setIsFlipped(!isFlipped);
     await delay(400);
+    if (showAnswer) {
+      setShowAnswer(false);
+    }
     setProgress(progress - 1);
     await delay(400);
     setIsAnimating(false);
@@ -102,7 +105,7 @@ function App() {
             <p>Previous</p>
           </button>
           <button onClick={handleAnswer}>
-            {!isFlipped ? `Show Answer` : `Show Question`}
+            {!showAnswer ? `Show Answer` : `Show Question`}
           </button>
           <button
             onClick={handleNext}

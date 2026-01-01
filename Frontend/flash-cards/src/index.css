@@ -17,10 +17,6 @@ button {
   transform: rotateY(180deg);
 }
 
-.flip-card-inner.transition {
-  transform: rotateY(180deg);
-}
-
 .flip-card-front,
 .flip-card-back {
   position: absolute;
