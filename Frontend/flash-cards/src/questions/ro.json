@@ -1,0 +1,127 @@
+[
+  {
+    "id": "1",
+    "question": "Care este diferența dintre var, let și const?",
+    "answer": "Principalele diferențe dintre var, let și const în JavaScript țin de scop, comportamentul de hoisting și posibilitatea de reasignare sau redeclarare."
+  },
+  {
+    "id": "2",
+    "question": "Ce este hoisting în JavaScript?",
+    "answer": "Hoisting este comportamentul JavaScript prin care declarațiile de variabile și funcții sunt mutate în partea de sus a scopului lor în timpul compilării, permițând utilizarea lor înainte de definire."
+  },
+  {
+    "id": "3",
+    "question": "Care este diferența dintre == și ===?",
+    "answer": "Operatorul == compară valorile cu conversie de tip, în timp ce === compară atât valoarea, cât și tipul fără conversie, fiind mai previzibil și mai sigur."
+  },
+  {
+    "id": "4",
+    "question": "Ce sunt funcțiile arrow?",
+    "answer": "Funcțiile arrow reprezintă o sintaxă mai scurtă pentru scrierea funcțiilor în JavaScript și diferă de funcțiile obișnuite în principal prin modul în care gestionează cuvântul cheie this."
+  },
+  {
+    "id": "5",
+    "question": "Ce este cuvântul cheie this?",
+    "answer": "Cuvântul cheie this se referă la obiectul care execută funcția curentă, iar valoarea sa depinde de modul în care funcția este apelată."
+  },
+  {
+    "id": "6",
+    "question": "Ce este un closure în JavaScript?",
+    "answer": "Un closure este creat atunci când o funcție păstrează accesul la variabilele din scopul exterior chiar și după ce funcția exterioară și-a încheiat execuția."
+  },
+  {
+    "id": "7",
+    "question": "Care este diferența dintre null și undefined?",
+    "answer": "undefined înseamnă că o variabilă a fost declarată, dar nu i-a fost atribuită o valoare, în timp ce null este o atribuire intenționată care reprezintă lipsa unei valori."
+  },
+  {
+    "id": "8",
+    "question": "Ce sunt promisiunile JavaScript?",
+    "answer": "Promisiunile reprezintă finalizarea sau eșecul unei operații asincrone și permit gestionarea codului asincron într-un mod mai lizibil."
+  },
+  {
+    "id": "9",
+    "question": "Ce este async/await?",
+    "answer": "Async/await este o sintaxă construită peste promisiuni care permite scrierea codului asincron într-un mod similar codului sincron."
+  },
+  {
+    "id": "10",
+    "question": "Ce este propagarea evenimentelor (event bubbling)?",
+    "answer": "Propagarea evenimentelor este procesul prin care un eveniment începe de la elementul țintă și se propagă în sus prin elementele părinte din DOM."
+  },
+  {
+    "id": "11",
+    "question": "Ce este delegarea evenimentelor?",
+    "answer": "Delegarea evenimentelor este o tehnică prin care un singur listener de evenimente este adăugat unui element părinte pentru a gestiona evenimentele mai multor elemente copil."
+  },
+  {
+    "id": "12",
+    "question": "Ce este DOM-ul?",
+    "answer": "Document Object Model (DOM) este o interfață de programare care reprezintă structura unui document HTML sau XML sub forma unui arbore de obiecte."
+  },
+  {
+    "id": "13",
+    "question": "Ce este o funcție pură?",
+    "answer": "O funcție pură returnează întotdeauna același rezultat pentru aceleași date de intrare și nu produce efecte secundare, cum ar fi modificarea variabilelor externe."
+  },
+  {
+    "id": "14",
+    "question": "Care este diferența dintre map, filter și reduce?",
+    "answer": "map transformă fiecare element dintr-un array, filter selectează elemente pe baza unei condiții, iar reduce combină toate elementele într-o singură valoare."
+  },
+  {
+    "id": "15",
+    "question": "Ce este destructurarea în JavaScript?",
+    "answer": "Destructurarea este o sintaxă care permite extragerea valorilor din array-uri sau a proprietăților din obiecte în variabile distincte."
+  },
+  {
+    "id": "16",
+    "question": "Ce sunt template literals?",
+    "answer": "Template literals permit încorporarea expresiilor în șiruri de caractere folosind backticks și oferă interpolare mai ușoară și șiruri pe mai multe linii."
+  },
+  {
+    "id": "17",
+    "question": "Ce este operatorul spread?",
+    "answer": "Operatorul spread (...) permite extinderea elementelor unui iterable, precum un array sau un obiect, în elemente individuale."
+  },
+  {
+    "id": "18",
+    "question": "Ce este operatorul rest?",
+    "answer": "Operatorul rest (...) colectează mai multe elemente într-un singur array sau obiect și este adesea folosit în parametrii funcțiilor."
+  },
+  {
+    "id": "19",
+    "question": "Care este diferența dintre codul sincron și asincron?",
+    "answer": "Codul sincron se execută linie cu linie și blochează execuția, în timp ce codul asincron permite rularea altor operații înainte de finalizare."
+  },
+  {
+    "id": "20",
+    "question": "Ce este call stack-ul?",
+    "answer": "Call stack-ul este o structură de date care urmărește apelurile de funcții în JavaScript și gestionează ordinea lor de execuție."
+  },
+  {
+    "id": "21",
+    "question": "Ce este event loop-ul?",
+    "answer": "Event loop-ul verifică în mod constant call stack-ul și coada de mesaje pentru a determina când pot fi executate sarcinile aflate în așteptare."
+  },
+  {
+    "id": "22",
+    "question": "Ce sunt modulele JavaScript?",
+    "answer": "Modulele JavaScript permit împărțirea codului în fișiere reutilizabile folosind instrucțiunile import și export."
+  },
+  {
+    "id": "23",
+    "question": "Ce este imutabilitatea?",
+    "answer": "Imutabilitatea înseamnă că datele nu pot fi modificate după ce au fost create, ceea ce ajută la prevenirea efectelor secundare neașteptate."
+  },
+  {
+    "id": "24",
+    "question": "Ce este debouncing?",
+    "answer": "Debouncing limitează cât de des este executată o funcție prin întârzierea apelului acesteia până când a trecut un interval de timp specificat."
+  },
+  {
+    "id": "25",
+    "question": "Ce este throttling?",
+    "answer": "Throttling asigură că o funcție este executată cel mult o dată într-un interval de timp specificat."
+  }
+]
