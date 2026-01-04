@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-one: #1a1726;
+  --color-two: #ff9f1c;
+  --color-three: #a6b1e1;
+  --color-four: #606d5d;
+  --color-five: #edf0da;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+
+  -webkit-text-fill-color: #000000 !important;
+}
+
+.form-group:focus-within label {
+  font-weight: 500;
+}
+
+.error {
+  opacity: 0;
+}
+
+.error.active {
+  opacity: 1;
+}
+
+.crossed {
+  text-decoration: line-through;
+  color: var(--color-four);
+}
+
+.arc {
+  --b: 4px; /* thickness */
+  --a: 220deg; /* progression */
+  padding: var(--b);
+  --_g: /var(--b) var(--b) no-repeat radial-gradient(50% 50%, #000 97%, #0000);
+  mask: top var(--_g),
+    calc(50% + 50% * sin(var(--a))) calc(50% - 50% * cos(var(--a))) var(--_g),
+    linear-gradient(#0000 0 0) content-box intersect,
+    conic-gradient(#000 var(--a), #0000 0);
+}
