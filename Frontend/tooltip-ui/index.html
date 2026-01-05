@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/output.css" />
+    <title>Navbar Tooltip UI</title>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Basic HTML + Tailwindcss Website Project"
+    />
+    <meta name="author" content="Nihtii Sorin" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Nihtii Sorin - Frontend Developer" />
+    <meta property="og:description" content="Tailwind mini project" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="container flex p-4">
+    <nav class="mx-auto mt-24">
+      <!-- prettier-ignore -->
+      <ul class="
+        flex font-semibold gap-12 text-lg
+        [&>li]:relative [&>li]:cursor-pointer
+        [&>li>a]:px-4 [&>li>a]:py-2 [&>li>a]:group-hover:text-purple-900
+        [&>li>span]:absolute [&>li>span]:p-3 [&>li>span]:bottom-full [&>li>span]:left-1/2 [&>li>span]:-translate-x-1/2
+        [&>li>span]:text-center [&>li>span]:text-sm [&>li>span]:whitespace-nowrap [&>li>span]:rounded-xl [&>li>span]:text-white [&>li>span]:bg-black
+        [&>li>span]:after:absolute [&>li>span]:after:left-1/2 [&>li>span]:after:top-[90%] [&>li>span]:after:-translate-x-1/2
+        [&>li>span]:after:h-3 [&>li>span]:after:aspect-3/2 [&>li>span]:after:bg-black [&>li>span]:after:[clip-path:polygon(50%_0%,0%_100%,100%_100%)] [&>li>span]:after:transform-[rotate(180deg)]
+        [&>li>span]:transition-all [&>li>span]:duration-250 [&>li>span]:ease-in [&>li>span]:group-hover:-translate-y-[25%]
+        [&>li>span]:opacity-0 [&>li>span]:invisible [&>li>span]:group-hover:opacity-100 [&>li>span]:group-hover:visible"
+      > 
+        <li class="group">
+          <a target="_blank">Home</a>
+          <span class="">My roadmap.sh page</span>
+        </li>
+        <li class="group">
+          <a target="_blank">Projects</a>
+          <span class="">Here is everything I have built</span>
+        </li>
+        <li class="group">
+          <a target="_blank">Blog</a>
+          <span class="">Visit my blog</span>
+        </li>
+        <li class="group">
+          <a target="_blank">About</a>
+          <span class="">More about this page</span>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>
