@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <title>CV Model</title>
+    <title>Custom Dropdown</title>
     <!-- SEO Meta Tags -->
     <meta
       name="description"
@@ -20,8 +20,8 @@
     <meta property="og:description" content="My first tailwind mini project" />
     <meta property="og:type" content="website" />
   </head>
-  <body class="p-4">
-    <div class="relative flex flex-col gap-2 w-40 mx-auto mt-20">
+  <body>
+    <div class="relative flex flex-col w-40 mx-auto mt-20">
       <header
         id="header"
         class="flex items-center w-full px-2 py-0.5 border-2 rounded-lg cursor-pointer"
@@ -31,42 +31,45 @@
         <div class="
           relative ml-auto h-2 w-2.5
           bg-black [clip-path:polygon(50%_0%,0%_100%,100%_100%)] transform-[rotate(180deg)]
-          after:content-[''] after:absolute after:h-2 after:w-2.5 after:top-0.75 
+          after:content-[''] after:absolute after:h-2 after:w-2.5 after:top-0.75
           after:[clip-path:polygon(50%_0%,0%_100%,100%_100%)] after:bg-white"
         ></div>
       </header>
       <!-- prettier-ignore -->
       <main
         id="dropdown"
+        data-open="false"
         class="
         absolute top-full w-full pt-1.75 rounded-lg
-        transition duration-250 ease-out"
+        opacity-0 invisible data-[open=true]:opacity-100 data-[open=true]:visible
+        transition-all duration-200"
       >
         <ul
           class="
           border-2 rounded-lg
-          [&>li]:flex [&>li]:items-center
-          [&>li]:px-2 [&>li]:py-0.5 [&>li]:cursor-pointer [&>li]:hover:bg-amber-300
+          [&>li]:flex [&>li]:items-center [&>li]:px-2 [&>li]:py-0.5
+          [&>li]:cursor-pointer [&>li]:hover:bg-amber-300
           [&>li]:border-b-2 [&>li]:last:border-b-0 [&>li]:first:rounded-t-md [&>li]:last:rounded-b-md
-          [&>li>div]:ml-auto"
+          [&>li>div]:ml-auto [&>li>div]:invisible [&>li>div]:opacity-0
+          [&>li>div]:group-data-[selected=true]:visible [&>li>div]:group-data-[selected=true]:opacity-100"
         >
-          <li class="item">
+          <li data-selected="false" class="group item">
             <p>First item</p>
             <div class="fa fa-check-circle"></div>
           </li>
-          <li class="item">
+          <li data-selected="false" class="group item">
             <p>Second item</p>
             <div class="fa fa-check-circle"></div>
           </li>
-          <li class="item">
+          <li data-selected="false" class="group item">
             <p>Third item</p>
             <div class="fa fa-check-circle"></div>
           </li>
-          <li class="item">
+          <li data-selected="false" class="group item">
             <p>Fourth item</p>
             <div class="fa fa-check-circle"></div>
           </li>
-          <li class="item">
+          <li data-selected="false" class="group item">
             <p>Fifth item</p>
             <div class="fa fa-check-circle"></div>
           </li>
