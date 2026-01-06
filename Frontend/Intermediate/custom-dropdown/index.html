@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>CV Model</title>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Basic HTML + Tailwindcss Website Project"
+    />
+    <meta name="author" content="Nihtii Sorin" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Nihtii Sorin - Frontend Developer" />
+    <meta property="og:description" content="My first tailwind mini project" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="p-4">
+    <div class="relative flex flex-col gap-2 w-40 mx-auto mt-20">
+      <header
+        id="header"
+        class="flex items-center w-full px-2 py-0.5 border-2 rounded-lg cursor-pointer"
+      >
+        <p id="display">Select an Item</p>
+        <!-- prettier-ignore -->
+        <div class="
+          relative ml-auto h-2 w-2.5
+          bg-black [clip-path:polygon(50%_0%,0%_100%,100%_100%)] transform-[rotate(180deg)]
+          after:content-[''] after:absolute after:h-2 after:w-2.5 after:top-0.75 
+          after:[clip-path:polygon(50%_0%,0%_100%,100%_100%)] after:bg-white"
+        ></div>
+      </header>
+      <!-- prettier-ignore -->
+      <main
+        id="dropdown"
+        class="
+        absolute top-full w-full pt-1.75 rounded-lg
+        transition duration-250 ease-out"
+      >
+        <ul
+          class="
+          border-2 rounded-lg
+          [&>li]:flex [&>li]:items-center
+          [&>li]:px-2 [&>li]:py-0.5 [&>li]:cursor-pointer [&>li]:hover:bg-amber-300
+          [&>li]:border-b-2 [&>li]:last:border-b-0 [&>li]:first:rounded-t-md [&>li]:last:rounded-b-md
+          [&>li>div]:ml-auto"
+        >
+          <li class="item">
+            <p>First item</p>
+            <div class="fa fa-check-circle"></div>
+          </li>
+          <li class="item">
+            <p>Second item</p>
+            <div class="fa fa-check-circle"></div>
+          </li>
+          <li class="item">
+            <p>Third item</p>
+            <div class="fa fa-check-circle"></div>
+          </li>
+          <li class="item">
+            <p>Fourth item</p>
+            <div class="fa fa-check-circle"></div>
+          </li>
+          <li class="item">
+            <p>Fifth item</p>
+            <div class="fa fa-check-circle"></div>
+          </li>
+        </ul>
+      </main>
+    </div>
+
+    <script src="src/script.js"></script>
+  </body>
+</html>

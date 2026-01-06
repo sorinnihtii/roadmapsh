@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+#dropdown {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#dropdown.dropdown-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+li .fa-check-circle {
+  opacity: 0;
+  visibility: none;
+}
+
+li.selected .fa-check-circle {
+  opacity: 1;
+  visibility: visible;
+}
