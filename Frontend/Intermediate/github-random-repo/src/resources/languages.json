@@ -1,7 +1,7 @@
 [
   {
     "title": "All Languages",
-    "value": "default"
+    "value": "All Languages"
   },
   {
     "title": "ABAP",
@@ -42,10 +42,6 @@
   {
     "title": "Apex",
     "value": "Apex"
-  },
-  {
-    "title": "API",
-    "value": "API"
   },
   {
     "title": "APL",
@@ -718,10 +714,6 @@
   {
     "title": "nesC",
     "value": "nesC"
-  },
-  {
-    "title": "NetLinx",
-    "value": "NetLinx"
   },
   {
     "title": "NetLinx",
