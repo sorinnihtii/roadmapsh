@@ -67,7 +67,7 @@ function App() {
   const handleLanguageSelect = (language) => {
     setSelectedLanguage(language);
 
-    if (language === "All Languages") setQuery(defaultQuery);
+    if (!language || language === "All Languages") setQuery(defaultQuery);
     else
       setQuery(
         `https://api.github.com/search/repositories?q=${encodeURIComponent(
@@ -170,7 +170,11 @@ function App() {
                     }}
                     className="fa fa-circle"
                   />
-                  <p>{data.items[random].language}</p>
+                  <p>
+                    {data.items[random].language
+                      ? data.items[random].language
+                      : "Undefined"}
+                  </p>
                 </div>
                 <div>
                   <i className="fa fa-star"></i>

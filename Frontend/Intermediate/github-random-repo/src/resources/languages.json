@@ -212,14 +212,6 @@
     "value": "ColdFusion"
   },
   {
-    "title": "Common",
-    "value": "Common"
-  },
-  {
-    "title": "Component",
-    "value": "Component"
-  },
-  {
     "title": "Cool",
     "value": "Cool"
   },
@@ -258,14 +250,6 @@
   {
     "title": "Dart",
     "value": "Dart"
-  },
-  {
-    "title": "Diff",
-    "value": "Diff"
-  },
-  {
-    "title": "DIGITAL",
-    "value": "DIGITAL"
   },
   {
     "title": "DM",
@@ -378,10 +362,6 @@
   {
     "title": "Genshi",
     "value": "Genshi"
-  },
-  {
-    "title": "Gettext",
-    "value": "Gettext"
   },
   {
     "title": "GLSL",
@@ -674,10 +654,6 @@
   {
     "title": "Modula",
     "value": "Modula"
-  },
-  {
-    "title": "Module",
-    "value": "Module"
   },
   {
     "title": "Monkey",
@@ -1052,10 +1028,6 @@
     "value": "Stan"
   },
   {
-    "title": "Standard",
-    "value": "Standard"
-  },
-  {
     "title": "Stata",
     "value": "Stata"
   },
@@ -1146,10 +1118,6 @@
   {
     "title": "Vue",
     "value": "Vue"
-  },
-  {
-    "title": "Web",
-    "value": "Web"
   },
   {
     "title": "WebIDL",
