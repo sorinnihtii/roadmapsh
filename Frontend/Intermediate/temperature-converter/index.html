@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Temperature Converter</title>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Basic HTML + Tailwindcss Website Project"
+    />
+    <meta name="author" content="Nihtii Sorin" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Nihtii Sorin - Frontend Developer" />
+    <meta property="og:description" content="My first tailwind mini project" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body class="flex flex-col w-screem min-h-screen py-20 px-30">
+    <header class="flex flex-col mb-4 gap-1">
+      <h1 class="text-2xl font-semibold">Temperature Converter</h1>
+      <p class="text-md">
+        Enter the temperature, select the desired units and submit
+      </p>
+    </header>
+    <main>
+      <form class="flex gap-2">
+        <input
+          autofocus
+          class="w-20 px-2 border-2 rounded-md"
+          type="number"
+          name="temperature-value"
+          id="temperature-value"
+        />
+        <div class="dropdown relative flex flex-col w-40">
+          <button
+            type="button"
+            class="dropdown-toggle flex items-center w-full px-2 py-0.5 border-2 rounded-lg cursor-pointer"
+          >
+            <p id="inputUnit" class="dropdown-display">Celsius</p>
+            <!-- prettier-ignore -->
+            <div
+              class="dropdown-arrow
+              relative ml-auto h-2 w-2.5 
+              [clip-path:polygon(50%_0%,0%_100%,100%_100%)] transform-[rotate(180deg)] bg-black
+              after:content-[''] after:absolute after:h-2 after:w-2.5 after:top-0.75 after:left-1/2 after:-translate-x-1/2
+              after:[clip-path:polygon(50%_0%,0%_100%,100%_100%)] after:bg-white"
+            ></div>
+          </button>
+          <!-- prettier-ignore -->
+          <ul
+            data-open="false"
+            class="dropdown-menu absolute top-full w-full mt-1.75 border-2 rounded-lg
+            transition-all duration-200 opacity-0 invisible data-[open=true]:opacity-100 data-[open=true]:visible
+            [&>li]:flex [&>li]:items-center [&>li]:px-2 [&>li]:py-0.5
+            [&>li]:cursor-pointer [&>li]:bg-white [&>li]:hover:bg-gray-300 [&>li]:border-b-2 [&>li]:last:border-b-0
+            [&>li]:first:rounded-t-md [&>li]:last:rounded-b-md [&>li>div]:ml-auto
+            [&>li>div]:invisible [&>li>div]:opacity-0
+            [&>li>div]:group-data-[selected=true]:visible [&>li>div]:group-data-[selected=true]:opacity-100"
+          >
+            <li data-selected="false" class="group dropdown-option">
+              <p>Fahrenheit</p>
+              <div class="fa fa-check-circle"></div>
+            </li>
+            <li data-selected="false" class="group dropdown-option">
+              <p>Celsius</p>
+              <div class="fa fa-check-circle"></div>
+            </li>
+            <li data-selected="false" class="group dropdown-option">
+              <p>Kelvin</p>
+              <div class="fa fa-check-circle"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="dropdown relative flex flex-col w-40">
+          <button
+            type="button"
+            class="dropdown-toggle flex items-center w-full px-2 py-0.5 border-2 rounded-lg cursor-pointer"
+          >
+            <p id="outputUnit" class="dropdown-display">Fahrenheit</p>
+            <!-- prettier-ignore -->
+            <div
+              class="dropdown-arrow
+              relative ml-auto h-2 w-2.5 
+              [clip-path:polygon(50%_0%,0%_100%,100%_100%)] transform-[rotate(180deg)] bg-black
+              after:content-[''] after:absolute after:h-2 after:w-2.5 after:top-0.75 after:left-1/2 after:-translate-x-1/2
+              after:[clip-path:polygon(50%_0%,0%_100%,100%_100%)] after:bg-white"
+            ></div>
+          </button>
+          <!-- prettier-ignore -->
+          <ul
+            data-open="false"
+            class="dropdown-menu absolute top-full w-full mt-1.75 border-2 rounded-lg
+            transition-all duration-200 opacity-0 invisible data-[open=true]:opacity-100 data-[open=true]:visible
+            [&>li]:flex [&>li]:items-center [&>li]:px-2 [&>li]:py-0.5
+            [&>li]:cursor-pointer [&>li]:bg-white [&>li]:hover:bg-gray-300 [&>li]:border-b-2 [&>li]:last:border-b-0
+            [&>li]:first:rounded-t-md [&>li]:last:rounded-b-md [&>li>div]:ml-auto
+            [&>li>div]:invisible [&>li>div]:opacity-0
+            [&>li>div]:group-data-[selected=true]:visible [&>li>div]:group-data-[selected=true]:opacity-100"
+          >
+            <li data-selected="false" class="group dropdown-option">
+              <p>Fahrenheit</p>
+              <div class="fa fa-check-circle"></div>
+            </li>
+            <li data-selected="false" class="group dropdown-option">
+              <p>Celsius</p>
+              <div class="fa fa-check-circle"></div>
+            </li>
+            <li data-selected="false" class="group dropdown-option">
+              <p>Kelvin</p>
+              <div class="fa fa-check-circle"></div>
+            </li>
+          </ul>
+        </div>
+      </form>
+      <p id="result" class="mt-2 text-green-600"></p>
+    </main>
+    <script src="src/script.js"></script>
+  </body>
+</html>

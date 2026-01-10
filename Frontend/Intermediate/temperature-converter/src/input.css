@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.open {
+  transform: rotate(0deg);
+}
