@@ -132,7 +132,7 @@ function App() {
                   key={language.title}
                   onClick={() => handleLanguageSelect(language.title)}
                   data-selected="false"
-                  className="flex items-center px-2 py-0.5 bg-white cursor-pointer hover:bg-amber-300 border-b-2"
+                  className="flex items-center px-2 py-0.5 bg-white cursor-pointer hover:bg-gray-300 border-b-2"
                 >
                   <p>{language.title}</p>
                   <div
