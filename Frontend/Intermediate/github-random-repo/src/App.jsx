@@ -39,7 +39,8 @@ function App() {
         setData(result);
         setRandom(getRandomIndex(result.items.length));
       } catch (err) {
-        setError(err.message);
+        console.log(err);
+        setError(err);
       } finally {
         setIsPending(false);
       }
@@ -84,11 +85,13 @@ function App() {
   return (
     <main className="flex flex-col p-2 mx-auto mt-20 w-80">
       <header className="flex items-center gap-2">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/960px-Octicons-mark-github.svg.png?20180806170715"
-          alt="github logo"
-          className="object-scale-down h-7 aspect-square"
-        />
+        <a href="https://github.com/">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/960px-Octicons-mark-github.svg.png?20180806170715"
+            alt="github logo"
+            className="object-scale-down h-7 aspect-square"
+          />
+        </a>
         <h5>Github Repository Finder</h5>
       </header>
       <section>
@@ -144,9 +147,21 @@ function App() {
           </main>
         </section>
 
-        <div className="flex flex-col justify-center items-start mt-2 px-4 py-3 border-2 rounded-md cursor-default">
+        <div
+          className={`flex flex-col justify-center items-start mt-2 px-4 py-3 border-2 rounded-md cursor-default ${
+            error && "border-red-600"
+          }`}
+        >
           {isPending && <p>Loading...</p>}
-          {error && <p>{error}</p>}
+          {error && (
+            <p className="font-semibold text-red-600 text-sm">
+              {(error.message === "HTTP error! status: 403" &&
+                "Access Forbidden. Please try again in a few seconds") ||
+                (error.message === "Failed to fetch" &&
+                  "Failed to fetch. Please check your internet connection and try again") ||
+                error.message}
+            </p>
+          )}
           {!error && !isPending && data && (
             <>
               <a
@@ -195,9 +210,13 @@ function App() {
         {!isPending && (
           <button
             onClick={handleRefresh}
-            className="w-full mt-2 py-2 rounded-md bg-black text-white text-xs cursor-pointer"
+            className={`w-full mt-2 py-2 rounded-md capitalize text-white text-xs cursor-pointer border-2 border-black ${
+              error
+                ? "font-bold bg-red-600 border-red-600 hover:bg-white hover:text-red-600"
+                : `font-semibold bg-black hover:bg-gray-300 hover:text-black`
+            }`}
           >
-            Refresh
+            refresh
           </button>
         )}
       </section>
