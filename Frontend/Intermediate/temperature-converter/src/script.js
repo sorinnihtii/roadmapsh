@@ -22,13 +22,13 @@ function closeAllDropdowns() {
   });
 }
 
-function updateSelectedData() {
+function updateSelectedOption() {
   dropdowns.forEach((dropdown) => {
     const display = dropdown.querySelector(".dropdown-display");
     const options = dropdown.querySelectorAll(".dropdown-option");
 
     options.forEach((option) => {
-      const selectedOption = option.querySelector("p").textContent;
+      const selectedOption = option.querySelector(".option-name").textContent;
 
       if (
         (display.id === "input-unit-box" && selectedOption === inputUnit) ||
@@ -50,30 +50,41 @@ function switchInputs() {
   outputUnit = swap;
 }
 
-function convert(inputValue, inputUnit, outputUnit) {
+function convert(value, inputUnit, outputUnit) {
   if (inputUnit === "Fahrenheit" && outputUnit === "Celsius")
-    return ((inputValue - 32) * 5) / 9;
+    return ((value - 32) * 5) / 9;
   if (inputUnit === "Fahrenheit" && outputUnit === "Kelvin")
-    return ((inputValue - 32) * 5) / 9 + 273.15;
+    return ((value - 32) * 5) / 9 + 273.15;
   if (inputUnit === "Celsius" && outputUnit === "Fahrenheit")
-    return (inputValue * 9) / 5 + 32;
-  if (inputUnit === "Celsius" && outputUnit === "Kelvin")
-    return inputValue + 273.15;
+    return (value * 9) / 5 + 32;
   if (inputUnit === "Kelvin" && outputUnit === "Fahrenheit")
-    return ((inputValue - 273.15) * 9) / 5 + 32;
-  if (inputUnit === "Kelvin" && outputUnit === "Celsius")
-    return inputValue - 273.15;
+    return ((value - 273.15) * 9) / 5 + 32;
+  if (inputUnit === "Kelvin" && outputUnit === "Celsius") return value - 273.15;
+  if (inputUnit === "Celsius" && outputUnit === "Kelvin") return value + 273.15;
 }
 
-function submit() {
-  const initialInput = inputValueBox.value;
+function validateInput(value, unit) {
+  if (unit === "Fahrenheit" && value < -459.67) {
+    return -459.67;
+  }
+  if (unit === "Celsius" && value < -273.15) {
+    return -273.15;
+  }
+  if (unit === "Kelvin" && value < 0) {
+    return 0;
+  }
+  if (value) return value;
+
+  return 0;
+}
+
+function showResult() {
+  const initialInput = parseFloat(inputValueBox.value);
   const displayResult = document.getElementById("display-result");
 
-  let inputValue = 0;
-  if (initialInput) inputValue = parseFloat(initialInput);
+  let inputValue = validateInput(initialInput, inputUnit);
 
   const result = convert(inputValue, inputUnit, outputUnit);
-  console.log(inputValue, inputUnit, outputUnit, result);
   const rounded = result.toFixed(2);
 
   displayResult.textContent =
@@ -98,7 +109,7 @@ dropdowns.forEach((dropdown) => {
 
   options.forEach((option) => {
     option.addEventListener("click", () => {
-      const selectedOption = option.querySelector("p").textContent;
+      const selectedOption = option.querySelector(".option-name").textContent;
 
       if (
         (display.id === "input-unit-box" && selectedOption === outputUnit) ||
@@ -110,12 +121,18 @@ dropdowns.forEach((dropdown) => {
         else outputUnit = selectedOption;
       }
 
-      updateSelectedData();
+      updateSelectedOption();
       closeDropdown(menu, arrow);
-      submit();
+      showResult();
     });
   });
 });
 
-document.addEventListener("DOMContentLoaded", submit);
-inputValueBox.addEventListener("input", submit);
+document.addEventListener("DOMContentLoaded", showResult);
+inputValueBox.addEventListener("input", () => {
+  showResult();
+});
+
+inputValueBox.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") e.preventDefault();
+});
