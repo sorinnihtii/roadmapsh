@@ -1,8 +1,8 @@
 const dropdowns = document.querySelectorAll(".dropdown");
 
-const temperature_input = document.getElementById("temperature-value");
-const unit1_input = document.getElementById("inputUnit");
-const unit2_input = document.getElementById("outputUnit");
+const inputValueBox = document.getElementById("input-value-box");
+let inputUnit = document.getElementById("input-unit-box").textContent;
+let outputUnit = document.getElementById("output-unit-box").textContent;
 
 function openDropdown(menu, arrow) {
   menu.setAttribute("data-open", "true");
@@ -22,11 +22,32 @@ function closeAllDropdowns() {
   });
 }
 
+function updateSelectedData() {
+  dropdowns.forEach((dropdown) => {
+    const display = dropdown.querySelector(".dropdown-display");
+    const options = dropdown.querySelectorAll(".dropdown-option");
+
+    options.forEach((option) => {
+      const selectedOption = option.querySelector("p").textContent;
+
+      if (
+        (display.id === "input-unit-box" && selectedOption === inputUnit) ||
+        (display.id === "output-unit-box" && selectedOption === outputUnit)
+      ) {
+        option.setAttribute("data-selected", "true");
+        display.textContent = selectedOption;
+      } else {
+        option.setAttribute("data-selected", "false");
+      }
+    });
+  });
+}
+
 function switchInputs() {
-  if (unit1_input.textContent === unit2_input.textContent) return;
-  const unit1 = unit1_input.textContent;
-  unit1_input.textContent = unit2_input.textContent;
-  unit2_input.textContent = unit1;
+  if (inputUnit === outputUnit) return;
+  const swap = inputUnit;
+  inputUnit = outputUnit;
+  outputUnit = swap;
 }
 
 function convert(inputValue, inputUnit, outputUnit) {
@@ -45,15 +66,14 @@ function convert(inputValue, inputUnit, outputUnit) {
 }
 
 function submit() {
-  const initialInput = temperature_input.value;
-  const inputUnit = unit1_input.textContent;
-  const outputUnit = unit2_input.textContent;
-  const displayResult = document.getElementById("result");
+  const initialInput = inputValueBox.value;
+  const displayResult = document.getElementById("display-result");
 
   let inputValue = 0;
   if (initialInput) inputValue = parseFloat(initialInput);
 
   const result = convert(inputValue, inputUnit, outputUnit);
+  console.log(inputValue, inputUnit, outputUnit, result);
   const rounded = result.toFixed(2);
 
   displayResult.textContent =
@@ -78,25 +98,24 @@ dropdowns.forEach((dropdown) => {
 
   options.forEach((option) => {
     option.addEventListener("click", () => {
-      options.forEach((a) => a.setAttribute("data-selected", "false"));
-      option.setAttribute("data-selected", "true");
-
       const selectedOption = option.querySelector("p").textContent;
 
-      // prettier-ignore
       if (
-        (display.id === "inputUnit" && selectedOption === outputUnit.textContent) ||
-        (display.id === "outputUnit" && selectedOption === inputUnit.textContent)
+        (display.id === "input-unit-box" && selectedOption === outputUnit) ||
+        (display.id === "output-unit-box" && selectedOption === inputUnit)
       ) {
         switchInputs();
-      } 
-      else display.textContent = selectedOption;
+      } else {
+        if (display.id === "input-unit-box") inputUnit = selectedOption;
+        else outputUnit = selectedOption;
+      }
 
-      submit();
+      updateSelectedData();
       closeDropdown(menu, arrow);
+      submit();
     });
   });
 });
 
 document.addEventListener("DOMContentLoaded", submit);
-temperature_input.addEventListener("input", submit);
+inputValueBox.addEventListener("input", submit);

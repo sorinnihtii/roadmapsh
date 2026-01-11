@@ -33,15 +33,15 @@
           autofocus
           class="w-20 px-2 border-2 rounded-md"
           type="number"
-          name="temperature-value"
-          id="temperature-value"
+          name="input-value-box"
+          id="input-value-box"
         />
         <div class="dropdown relative flex flex-col w-40">
           <button
             type="button"
             class="dropdown-toggle flex items-center w-full px-2 py-0.5 border-2 rounded-lg cursor-pointer"
           >
-            <p id="inputUnit" class="dropdown-display">Celsius</p>
+            <p id="input-unit-box" class="dropdown-display">Celsius</p>
             <!-- prettier-ignore -->
             <div
               class="dropdown-arrow
@@ -81,7 +81,7 @@
             type="button"
             class="dropdown-toggle flex items-center w-full px-2 py-0.5 border-2 rounded-lg cursor-pointer"
           >
-            <p id="outputUnit" class="dropdown-display">Fahrenheit</p>
+            <p id="output-unit-box" class="dropdown-display">Fahrenheit</p>
             <!-- prettier-ignore -->
             <div
               class="dropdown-arrow
@@ -117,7 +117,7 @@
           </ul>
         </div>
       </form>
-      <p id="result" class="mt-2 text-green-600"></p>
+      <p id="display-result" class="mt-2 text-green-600"></p>
     </main>
     <script src="src/script.js"></script>
   </body>
