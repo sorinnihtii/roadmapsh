@@ -62,7 +62,7 @@ function App() {
                 {postData.is_video && postData.media?.reddit_video && (
                   <video
                     controls
-                    className="w-150 object-contain rounded-xl"
+                    className="w-150 object-contain rounded-xl border border-gray-200"
                     src={postData.media.reddit_video.fallback_url}
                   />
                 )}

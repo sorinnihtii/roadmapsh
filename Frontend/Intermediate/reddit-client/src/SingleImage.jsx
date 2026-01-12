@@ -48,27 +48,31 @@ const SingleImage = ({ url }) => {
           onClick={handleFullscreen}
           className="
             fixed w-10 h-10 right-10 top-10 z-200
-            opacity-75 bg-gray-800 hover:bg-gray-900 border border-white text-white rounded-full cursor-pointer"
+            opacity-75 bg-gray-800 hover:bg-gray-900 text-white rounded-full cursor-pointer"
         >
-          ✖
+          <pre>✖</pre>
         </button>
       )}
       <div
         onClick={!fullscreen ? handleFullscreen : undefined}
-        className={`flex items-center justify-center transform duration-100 overflow-hidden ${
+        className={`flex items-center justify-center transform duration-150 ease-in-out overflow-hidden ${
           fullscreen
-            ? "fixed h-screen w-screen left-0 top-0 z-100"
-            : "relative w-150 rounded-xl border-gray-300"
+            ? "fixed w-screen inset-0 z-100"
+            : "relative w-150 rounded-xl border border-gray-200"
         }`}
       >
-        <img className="absolute blur-xl w-full" src={url} />
-        <span className="absolute inset-0 bg-black/50"></span>
+        <img className="absolute blur-xl h-full w-full scale-110" src={url} />
+        <span
+          className={`absolute inset-0 ${
+            fullscreen ? "bg-black/70" : "bg-black/60"
+          }`}
+        ></span>
         <img
           onClick={fullscreen ? handleZoom : undefined}
           src={url}
           alt="Post Image"
-          className={`w-full object-contain max-h-120 z-10 
-                ${fullscreen ? "h-screen" : "h-full"} 
+          className={`object-contain z-10 
+                ${fullscreen ? "h-screen max-w-[70vw]" : "max-h-120"} 
                 ${
                   fullscreen &&
                   (isZoomed ? "scale-175 cursor-zoom-out" : "cursor-zoom-in")
