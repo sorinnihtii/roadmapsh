@@ -28,14 +28,14 @@ function updateSelectedOption() {
     const options = dropdown.querySelectorAll(".dropdown-option");
 
     options.forEach((option) => {
-      const selectedOption = option.querySelector(".option-name").textContent;
+      const optionName = option.querySelector(".option-name").textContent;
 
       if (
-        (display.id === "input-unit-box" && selectedOption === inputUnit) ||
-        (display.id === "output-unit-box" && selectedOption === outputUnit)
+        (display.id === "input-unit-box" && optionName === inputUnit) ||
+        (display.id === "output-unit-box" && optionName === outputUnit)
       ) {
         option.setAttribute("data-selected", "true");
-        display.textContent = selectedOption;
+        display.textContent = optionName;
       } else {
         option.setAttribute("data-selected", "false");
       }
@@ -48,19 +48,6 @@ function switchInputs() {
   const swap = inputUnit;
   inputUnit = outputUnit;
   outputUnit = swap;
-}
-
-function convert(value, inputUnit, outputUnit) {
-  if (inputUnit === "Fahrenheit" && outputUnit === "Celsius")
-    return ((value - 32) * 5) / 9;
-  if (inputUnit === "Fahrenheit" && outputUnit === "Kelvin")
-    return ((value - 32) * 5) / 9 + 273.15;
-  if (inputUnit === "Celsius" && outputUnit === "Fahrenheit")
-    return (value * 9) / 5 + 32;
-  if (inputUnit === "Kelvin" && outputUnit === "Fahrenheit")
-    return ((value - 273.15) * 9) / 5 + 32;
-  if (inputUnit === "Kelvin" && outputUnit === "Celsius") return value - 273.15;
-  if (inputUnit === "Celsius" && outputUnit === "Kelvin") return value + 273.15;
 }
 
 function validateInput(value, unit) {
@@ -76,6 +63,19 @@ function validateInput(value, unit) {
   if (value) return value;
 
   return 0;
+}
+
+function convert(value, inputUnit, outputUnit) {
+  if (inputUnit === "Fahrenheit" && outputUnit === "Celsius")
+    return ((value - 32) * 5) / 9;
+  if (inputUnit === "Fahrenheit" && outputUnit === "Kelvin")
+    return ((value - 32) * 5) / 9 + 273.15;
+  if (inputUnit === "Celsius" && outputUnit === "Fahrenheit")
+    return (value * 9) / 5 + 32;
+  if (inputUnit === "Kelvin" && outputUnit === "Fahrenheit")
+    return ((value - 273.15) * 9) / 5 + 32;
+  if (inputUnit === "Kelvin" && outputUnit === "Celsius") return value - 273.15;
+  if (inputUnit === "Celsius" && outputUnit === "Kelvin") return value + 273.15;
 }
 
 function showResult() {

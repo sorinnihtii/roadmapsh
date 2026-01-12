@@ -20,23 +20,23 @@
     <meta property="og:description" content="My first tailwind mini project" />
     <meta property="og:type" content="website" />
   </head>
-  <body class="flex flex-col w-screem min-h-screen py-20 px-30">
-    <header class="flex flex-col mb-4 gap-1">
+  <body class="flex flex-col w-screem min-h-screen items-center">
+    <header class="flex flex-col mt-40 mb-4 gap-1 w-[75vw]">
       <h1 class="text-2xl font-semibold">Temperature Converter</h1>
       <p class="text-md">
         Enter the temperature, select the desired units and submit
       </p>
     </header>
-    <main>
-      <form class="flex gap-2">
+    <main class="flex flex-col w-[75vw]">
+      <form class="flex gap-2 h-8 items-center">
         <input
           autofocus
-          class="w-20 px-2 border-2 rounded-md"
           type="number"
           name="input-value-box"
           id="input-value-box"
+          class="w-16 h-full px-2 border-2 rounded-md"
         />
-        <div class="dropdown relative flex flex-col w-40">
+        <div class="dropdown relative flex flex-col w-40 h-full">
           <button
             type="button"
             class="dropdown-toggle flex items-center w-full px-2 py-0.5 border-2 rounded-lg cursor-pointer"
@@ -76,7 +76,8 @@
             </li>
           </ul>
         </div>
-        <div class="dropdown relative flex flex-col w-40">
+        <span class="fa fa-arrow-right"></span>
+        <div class="dropdown relative flex flex-col w-40 h-full">
           <button
             type="button"
             class="dropdown-toggle flex items-center w-full px-2 py-0.5 border-2 rounded-lg cursor-pointer"
