@@ -1,13 +1,16 @@
+import { convertTime } from "./tools";
 import { useState } from "react";
 import fetchPosts from "./fetchPosts";
-import GallerySlider from "./GallerySlder";
-import { convertTime } from "./tools";
-import SingleImage from "./SingleImage";
+import ImageGallery from "./ImageGallery";
+
+const defaultQuery = "https://www.reddit.com";
 
 function App() {
-  const [query, setQuery] = useState("https://www.reddit.com/r/niceguys.json");
+  const [query, setQuery] = useState(defaultQuery + "/r/niceguys.json");
 
   const { data, isPending, error } = fetchPosts(query);
+
+  if (data) console.log(data);
 
   const copyToClipboard = async (link) => {
     try {
@@ -28,17 +31,22 @@ function App() {
           const postData = post.data;
           if (postData.over_18) return;
 
-          const permalink = "https://www.reddit.com/" + postData.permalink;
+          const full_permalink = defaultQuery + postData.permalink;
+          console.log(full_permalink);
 
-          const galleryImages =
+          const isImage = postData.is_reddit_media_domain && !postData.is_video;
+          const isGallery =
             postData.is_gallery &&
             postData.media_metadata &&
-            postData.gallery_data.items
-              ? postData.gallery_data.items.map((item) => {
-                  const media = postData.media_metadata[item.media_id];
-                  return media.s.u.replaceAll("&amp;", "&");
-                })
-              : [];
+            postData.gallery_data.items;
+
+          // prettier-ignore
+          const galleryImages = isGallery 
+            ? postData.gallery_data.items.map((item) => {
+                const media = postData.media_metadata[item.media_id];
+                return media.s.u.replaceAll("&amp;", "&");
+              })
+            : isImage ? [postData.url] : [];
 
           return (
             <article
@@ -53,21 +61,20 @@ function App() {
               </header>
 
               <main>
-                <a href={permalink} className="text-lg font-semibold">
+                <a href={full_permalink} className="text-lg font-semibold">
                   {postData.title}
                 </a>
-                {postData.is_gallery && galleryImages.length && (
-                  <GallerySlider images={galleryImages} />
+
+                {galleryImages.length > 0 && (
+                  <ImageGallery images={galleryImages} />
                 )}
-                {postData.is_video && postData.media?.reddit_video && (
+
+                {postData.is_video && postData.media.reddit_video && (
                   <video
                     controls
                     className="w-150 object-contain rounded-xl border border-gray-200"
                     src={postData.media.reddit_video.fallback_url}
                   />
-                )}
-                {postData.is_reddit_media_domain && !postData.is_video && (
-                  <SingleImage url={postData.url} />
                 )}
 
                 {postData.is_self && <p>{postData.selftext}</p>}
@@ -101,7 +108,7 @@ function App() {
                   <p>{postData.num_comments}</p>
                 </button>
                 <button
-                  onClick={() => copyToClipboard(permalink)}
+                  onClick={() => copyToClipboard(full_permalink)}
                   className="cursor-pointer"
                 >
                   <svg
