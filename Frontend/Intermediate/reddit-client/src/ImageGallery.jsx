@@ -36,7 +36,7 @@ const ImageGallery = ({ images }) => {
 
   const scrollPrev = async (e) => {
     e.stopPropagation();
-    if (isAnimating) return;
+    if (isAnimating || currentSlide === 1) return;
     setIsAnimating(true);
     setCurrentSlide((prev) => prev - 1);
     scrollRef.current.scrollBy(-scrollRef.current.clientWidth, 0);
@@ -47,7 +47,7 @@ const ImageGallery = ({ images }) => {
 
   const scrollNext = async (e) => {
     e.stopPropagation();
-    if (isAnimating) return;
+    if (isAnimating || currentSlide === images.length) return;
     setIsAnimating(true);
     setCurrentSlide((prev) => prev + 1);
     scrollRef.current.scrollBy(scrollRef.current.clientWidth, 0);
@@ -56,11 +56,24 @@ const ImageGallery = ({ images }) => {
     setIsAnimating(false);
   };
 
+  const handleKeyDown = async (e) => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+
+    e.preventDefault();
+
+    if (e.key === "ArrowRight") {
+      scrollNext(e);
+    } else {
+      scrollPrev(e);
+    }
+  };
+
   const handleFullscreen = () => {
     setIsFullscreen((prev) => !prev);
   };
 
   const handleZoom = (e) => {
+    e.stopPropagation();
     const rect = e.target.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -73,11 +86,13 @@ const ImageGallery = ({ images }) => {
   return (
     <div
       onClick={!isFullscreen ? handleFullscreen : undefined}
+      onKeyDown={isFullscreen ? handleKeyDown : undefined}
+      tabIndex={0}
       className={`relative ${isFullscreen ? "h-screen w-screen" : "w-150"}`}
     >
       <div
         ref={scrollRef}
-        className={`flex w-full overflow-x-scroll overflow-y-hidden [scrollbar-width:none] snap-x snap-mandatory scroll-smooth ${
+        className={`flex w-full overflow-hidden [scrollbar-width:none] snap-x snap-mandatory scroll-smooth ${
           isFullscreen
             ? "fixed inset-0 z-100"
             : "relative rounded-xl border border-gray-200 cursor-pointer"
@@ -86,24 +101,24 @@ const ImageGallery = ({ images }) => {
         {images.map((src, index) => (
           <div
             key={index}
-            className={`relative flex shrink-0 w-150 justify-center object-contain snap-center ease-in-out ${
+            className={`relative flex shrink-0 w-150 justify-center object-contain snap-center ease-in-out overflow-hidden ${
               isFullscreen ? "h-screen w-screen" : "max-h-120"
             }`}
           >
             <img
-              className="absolute blur-xl h-full w-full scale-110"
+              className="absolute h-full w-full blur-3xl scale-150 origin-center grayscale-25"
               src={src}
             />
             <span
-              className={`absolute inset-0 ${
-                isFullscreen ? "bg-black/70" : "bg-black/60"
+              className={`absolute w-full inset-0 ${
+                isFullscreen ? "bg-black/50" : "bg-black/50"
               }`}
             ></span>
             <img
               onClick={isFullscreen ? handleZoom : undefined}
               src={src}
               alt={`Gallery Image ${index + 1}`}
-              className={`object-contain z-10 ${
+              className={`object-contain z-1  ${
                 isFullscreen &&
                 (isZoomed ? "scale-175 cursor-zoom-out" : "cursor-zoom-in")
               }`}
@@ -117,7 +132,7 @@ const ImageGallery = ({ images }) => {
         <button
           onClick={handleFullscreen}
           className="
-            fixed w-10 h-10 right-10 top-10 z-200
+            fixed w-10 h-10 right-10 top-10 z-100
             opacity-75 bg-gray-800 hover:bg-gray-900 text-white rounded-full cursor-pointer"
         >
           <pre>✖</pre>
@@ -129,9 +144,13 @@ const ImageGallery = ({ images }) => {
           <button
             onClick={scrollPrev}
             className={`
-              flex items-center justify-center w-9 aspect-square top-1/2 -translate-y-1/2
-              rounded-full bg-gray-800 opacity-75 cursor-pointer z-250 hover:bg-gray-900
-              ${isFullscreen ? "fixed left-10" : "absolute left-4"}
+              flex items-center justify-center aspect-square top-1/2 -translate-y-1/2
+              rounded-full bg-gray-800 opacity-75 cursor-pointer hover:bg-gray-900
+              ${
+                isFullscreen
+                  ? "fixed w-12 left-20 z-100"
+                  : "absolute w-9 left-4 z-10"
+              }
               ${currentSlide === 1 && "hidden opacity-0"}`}
           >
             <span
@@ -147,8 +166,12 @@ const ImageGallery = ({ images }) => {
             onClick={scrollNext}
             className={`
               absolute flex items-center justify-center w-9 aspect-square top-1/2 -translate-y-1/2
-              rounded-full bg-gray-800 opacity-75 cursor-pointer z-300 hover:bg-gray-900
-              ${isFullscreen ? "fixed right-10" : "absolute right-4"}
+              rounded-full bg-gray-800 opacity-75 cursor-pointer hover:bg-gray-900
+              ${
+                isFullscreen
+                  ? "fixed w-12 right-20 z-100"
+                  : "absolute w-9 right-4 z-10"
+              }
               ${currentSlide === images.length && "hidden opacity-0"}`}
           >
             <span
@@ -163,8 +186,8 @@ const ImageGallery = ({ images }) => {
           <div
             className={`
               flex items-center justify-around gap-1.5 px-1.5 py-1 
-              bottom-4 left-1/2 -translate-x-1/2 z-250 bg-gray-800 opacity-75 rounded-xl
-              ${isFullscreen ? "fixed" : "absolute"}`}
+              bottom-4 left-1/2 -translate-x-1/2 bg-gray-800 opacity-75 rounded-xl
+              ${isFullscreen ? "fixed z-100" : "absolute z-10"}`}
           >
             {images.map((src, index) => (
               <span
