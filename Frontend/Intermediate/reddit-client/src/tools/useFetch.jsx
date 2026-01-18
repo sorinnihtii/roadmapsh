@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 
-const fetchPosts = (url) => {
+const useFetch = (url) => {
   const [data, setData] = useState(null);
-  const [isPending, setIsPending] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log(url);
         setError(null);
-        setIsPending(true);
+        setIsLoading(true);
 
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          headers: {
+            "User-Agent":
+              "multilane-reddit-client:1.0 (github.com/sorinnihtii/roadmapsh/tree/main/Frontend/Intermediate/reddit-client)",
+          },
+        });
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -22,13 +28,13 @@ const fetchPosts = (url) => {
       } catch (err) {
         setError(err);
       } finally {
-        setIsPending(false);
+        setIsLoading(false);
       }
     };
     fetchData();
-  }, []);
+  }, [url]);
 
-  return { data, isPending, error };
+  return { data, isLoading, error };
 };
 
-export default fetchPosts;
+export default useFetch;

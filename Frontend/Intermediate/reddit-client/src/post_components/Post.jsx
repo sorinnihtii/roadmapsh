@@ -1,0 +1,93 @@
+import ImageGallery from "./ImageGallery.jsx";
+import CommentList from "./CommentList.jsx";
+import { convertTime } from "../tools/tools.js";
+import { memo, useState, useEffect } from "react";
+
+const homepage = "https://www.reddit.com";
+
+const Post = ({ data, copyToClipboard }) => {
+  if (data.over_18) return;
+
+  const [isOpenComments, setIsOpenComments] = useState(false);
+
+  const full_permalink = homepage + data.permalink;
+  const comments_link = full_permalink + ".json";
+
+  const isImage = data.is_reddit_media_domain && !data.is_video;
+  const isGallery =
+    data.is_gallery && data.media_metadata && data.gallery_data.items;
+
+  // prettier-ignore
+  const galleryImages = isGallery
+            ? data.gallery_data.items.map((item) => {
+                const media = data.media_metadata[item.media_id];
+                return media.s.u.replaceAll("&amp;", "&");
+              })
+            : isImage ? [data.url] : [];
+
+  const handleOpenComments = () => {
+    setIsOpenComments((prev) => !prev);
+  };
+
+  return (
+    <article
+      className="mb-4 px-4 pb-2.5 pt-1 hover:bg-[#f7f7f7] border-b border-b-gray-300 rounded-xl rounded-b-none"
+      key={data.permalink}
+    >
+      <header className="flex">
+        <a>u/{data.author}</a>
+        <p className="before:content-['•'] before:px-2">
+          {convertTime(data.created_utc * 1000)}
+        </p>
+      </header>
+
+      <main>
+        <a href={full_permalink} className="text-lg font-semibold">
+          {data.title}
+        </a>
+
+        {galleryImages.length > 0 && <ImageGallery images={galleryImages} />}
+
+        {data.is_video && data.media.reddit_video && (
+          <video
+            controls
+            className="w-150 object-contain rounded-xl border border-gray-200"
+            src={data.media.reddit_video.fallback_url}
+          />
+        )}
+
+        {data.is_self && <p>{data.selftext}</p>}
+      </main>
+      <footer
+        className="
+                  flex gap-2 mt-2
+                  [&>button]:flex [&>button]:gap-1.5 [&>button]:items-center [&>button]:px-2.5 [&>button]:py-1
+                  [&>button]:text-sm [&>button]:rounded-2xl [&>button]:bg-gray-200"
+      >
+        <button disabled>
+          <svg height="16" width="16" icon-name="upvote" viewBox="0 0 20 20">
+            <path d="M10 19a3.966 3.966 0 01-3.96-3.962V10.98H2.838a1.731 1.731 0 01-1.605-1.073 1.734 1.734 0 01.377-1.895L9.364.254a.925.925 0 011.272 0l7.754 7.759c.498.499.646 1.242.376 1.894-.27.652-.9 1.073-1.605 1.073h-3.202v4.058A3.965 3.965 0 019.999 19H10zM2.989 9.179H7.84v5.731c0 1.13.81 2.163 1.934 2.278a2.163 2.163 0 002.386-2.15V9.179h4.851L10 2.163 2.989 9.179z"></path>
+          </svg>
+          <p>{data.score}</p>
+        </button>
+        <button onClick={handleOpenComments} className="cursor-pointer">
+          <svg height="16" width="16" icon-name="comment" viewBox="0 0 20 20">
+            <path d="M10 1a9 9 0 00-9 9c0 1.947.79 3.58 1.935 4.957L.231 17.661A.784.784 0 00.785 19H10a9 9 0 009-9 9 9 0 00-9-9zm0 16.2H6.162c-.994.004-1.907.053-3.045.144l-.076-.188a36.981 36.981 0 002.328-2.087l-1.05-1.263C3.297 12.576 2.8 11.331 2.8 10c0-3.97 3.23-7.2 7.2-7.2s7.2 3.23 7.2 7.2-3.23 7.2-7.2 7.2z"></path>
+          </svg>
+          <p>{data.num_comments}</p>
+        </button>
+        <button
+          onClick={() => copyToClipboard(full_permalink)}
+          className="cursor-pointer"
+        >
+          <svg height="16" width="16" icon-name="share" viewBox="0 0 20 20">
+            <path d="M12.8 17.524l6.89-6.887a.9.9 0 000-1.273L12.8 2.477a1.64 1.64 0 00-1.782-.349 1.64 1.64 0 00-1.014 1.518v2.593C4.054 6.728 1.192 12.075 1 17.376a1.353 1.353 0 00.862 1.32 1.35 1.35 0 001.531-.364l.334-.381c1.705-1.944 3.323-3.791 6.277-4.103v2.509c0 .667.398 1.262 1.014 1.518a1.638 1.638 0 001.783-.349v-.002zm-.994-1.548V12h-.9c-3.969 0-6.162 2.1-8.001 4.161.514-4.011 2.823-8.16 8-8.16h.9V4.024L17.784 10l-5.977 5.976z"></path>
+          </svg>
+        </button>
+      </footer>
+      {isOpenComments && <CommentList url={comments_link} />}
+    </article>
+  );
+};
+
+export default Post;

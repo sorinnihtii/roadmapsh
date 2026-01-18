@@ -1,130 +1,94 @@
-import { convertTime } from "./tools";
-import { useState } from "react";
-import fetchPosts from "./fetchPosts";
-import ImageGallery from "./ImageGallery";
+import { useNavigate } from "react-router-dom";
 
-const defaultQuery = "https://www.reddit.com";
+import Feed from "./Feed";
+import { useState } from "react";
 
 function App() {
-  const [query, setQuery] = useState(defaultQuery + "/r/niceguys.json");
+  const [showNewLaneForm, setShowNewLaneForm] = useState(false);
+  const [subreddit, setSubreddit] = useState("");
+  const [lanes, setLanes] = useState([]);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const { data, isPending, error } = fetchPosts(query);
+  console.log(lanes, lanes.length);
 
-  if (data) console.log(data);
+  function handleShowNewLaneForm() {
+    setError(null);
+    setSubreddit("");
+    setShowNewLaneForm((prev) => !prev);
+  }
 
-  const copyToClipboard = async (link) => {
-    try {
-      await navigator.clipboard.writeText(link);
-    } catch (err) {
-      console.error("Failed to copy text:", err);
+  function handleNewLane() {
+    if (lanes.includes(subreddit)) {
+      setError("Subreddit already added");
+      return;
     }
+    setLanes((prev) => [...prev, subreddit]);
+    setShowNewLaneForm(false);
+  }
+
+  const handleCloseLane = (toBeRemoved) => {
+    setLanes((prev) => prev.filter((p) => p != toBeRemoved));
   };
 
   return (
-    <section className="flex-col w-screen">
-      {isPending && <p>Loading...</p>}
-
-      {error && <p>{error.message}</p>}
-
-      {data &&
-        data.data.children.map((post) => {
-          const postData = post.data;
-          if (postData.over_18) return;
-
-          const full_permalink = defaultQuery + postData.permalink;
-          console.log(full_permalink);
-
-          const isImage = postData.is_reddit_media_domain && !postData.is_video;
-          const isGallery =
-            postData.is_gallery &&
-            postData.media_metadata &&
-            postData.gallery_data.items;
-
-          // prettier-ignore
-          const galleryImages = isGallery 
-            ? postData.gallery_data.items.map((item) => {
-                const media = postData.media_metadata[item.media_id];
-                return media.s.u.replaceAll("&amp;", "&");
-              })
-            : isImage ? [postData.url] : [];
-
-          return (
-            <article
-              className="mb-4 px-4 pb-2.5 pt-1 hover:bg-[#f7f7f7] border-b border-b-gray-300 rounded-xl"
-              key={postData.id}
-            >
-              <header className="flex">
-                <a>u/{postData.author}</a>
-                <p className="before:content-['•'] before:px-2">
-                  {convertTime(postData.created_utc * 1000)}
-                </p>
-              </header>
-
-              <main>
-                <a href={full_permalink} className="text-lg font-semibold">
-                  {postData.title}
-                </a>
-
-                {galleryImages.length > 0 && (
-                  <ImageGallery images={galleryImages} />
-                )}
-
-                {postData.is_video && postData.media.reddit_video && (
-                  <video
-                    controls
-                    className="w-150 object-contain rounded-xl border border-gray-200"
-                    src={postData.media.reddit_video.fallback_url}
-                  />
-                )}
-
-                {postData.is_self && <p>{postData.selftext}</p>}
-              </main>
-              <footer
-                className="
-                  flex gap-2 mt-2
-                  [&>button]:flex [&>button]:gap-1.5 [&>button]:items-center [&>button]:px-2.5 [&>button]:py-1
-                  [&>button]:text-sm [&>button]:rounded-2xl [&>button]:bg-gray-200"
-              >
-                <button disabled>
-                  <svg
-                    height="16"
-                    width="16"
-                    icon-name="upvote"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M10 19a3.966 3.966 0 01-3.96-3.962V10.98H2.838a1.731 1.731 0 01-1.605-1.073 1.734 1.734 0 01.377-1.895L9.364.254a.925.925 0 011.272 0l7.754 7.759c.498.499.646 1.242.376 1.894-.27.652-.9 1.073-1.605 1.073h-3.202v4.058A3.965 3.965 0 019.999 19H10zM2.989 9.179H7.84v5.731c0 1.13.81 2.163 1.934 2.278a2.163 2.163 0 002.386-2.15V9.179h4.851L10 2.163 2.989 9.179z"></path>
-                  </svg>
-                  <p>{postData.score}</p>
-                </button>
-                <button disabled>
-                  <svg
-                    height="16"
-                    width="16"
-                    icon-name="comment"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M10 1a9 9 0 00-9 9c0 1.947.79 3.58 1.935 4.957L.231 17.661A.784.784 0 00.785 19H10a9 9 0 009-9 9 9 0 00-9-9zm0 16.2H6.162c-.994.004-1.907.053-3.045.144l-.076-.188a36.981 36.981 0 002.328-2.087l-1.05-1.263C3.297 12.576 2.8 11.331 2.8 10c0-3.97 3.23-7.2 7.2-7.2s7.2 3.23 7.2 7.2-3.23 7.2-7.2 7.2z"></path>
-                  </svg>
-                  <p>{postData.num_comments}</p>
-                </button>
-                <button
-                  onClick={() => copyToClipboard(full_permalink)}
-                  className="cursor-pointer"
-                >
-                  <svg
-                    height="16"
-                    width="16"
-                    icon-name="share"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M12.8 17.524l6.89-6.887a.9.9 0 000-1.273L12.8 2.477a1.64 1.64 0 00-1.782-.349 1.64 1.64 0 00-1.014 1.518v2.593C4.054 6.728 1.192 12.075 1 17.376a1.353 1.353 0 00.862 1.32 1.35 1.35 0 001.531-.364l.334-.381c1.705-1.944 3.323-3.791 6.277-4.103v2.509c0 .667.398 1.262 1.014 1.518a1.638 1.638 0 001.783-.349v-.002zm-.994-1.548V12h-.9c-3.969 0-6.162 2.1-8.001 4.161.514-4.011 2.823-8.16 8-8.16h.9V4.024L17.784 10l-5.977 5.976z"></path>
-                  </svg>
-                </button>
-              </footer>
-            </article>
-          );
-        })}
-    </section>
+    <>
+      <nav className="fixed flex items-center left-0 top-0 h-14 px-10 w-screen bg-white border-b border-b-black z-100">
+        <header className="flex flex-col">
+          <h1 className="">Reddit Multi Lane</h1>
+        </header>
+        <button
+          onClick={handleShowNewLaneForm}
+          className="ml-auto px-2 py-px cursor-pointer bg-gray-200 text-sm rounded-xl"
+        >
+          New Lane
+        </button>
+      </nav>
+      {showNewLaneForm && (
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleNewLane();
+          }}
+          className="fixed flex flex-col top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-300 w-[25vw] p-4 bg-white border-2 rounded-xl"
+        >
+          <label
+            className="font-semibold text-lg text-center"
+            htmlFor="subreddit"
+          >
+            Please enter the desired subreddit:
+          </label>
+          <input
+            id="subreddit"
+            type="text"
+            value={subreddit}
+            onInput={(e) => setSubreddit(e.target.value)}
+            className="mt-1 border rounded-md"
+          />
+          <button
+            type="button"
+            onClick={handleNewLane}
+            className="text-sm py-2 mt-3 bg-black text-white rounded-md cursor-pointer"
+          >
+            Add Subreddit
+          </button>
+          {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+        </form>
+      )}
+      <main
+        className="grid w-screen"
+        style={{ gridTemplateColumns: `repeat(${lanes.length}, 1fr)` }}
+      >
+        {lanes &&
+          lanes.map((lane) => (
+            <Feed
+              key={lane}
+              subreddit={lane}
+              handleCloseLane={handleCloseLane}
+            />
+          ))}
+      </main>
+    </>
   );
 }
 export default App;

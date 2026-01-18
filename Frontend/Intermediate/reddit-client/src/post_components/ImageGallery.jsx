@@ -185,14 +185,14 @@ const ImageGallery = ({ images }) => {
 
           <div
             className={`
-              flex items-center justify-around gap-1.5 px-1.5 py-1 
-              bottom-4 left-1/2 -translate-x-1/2 bg-gray-800 opacity-75 rounded-xl
+              flex items-center justify-around gap-1.5 px-1.5 py-1.25 
+              bottom-4 left-1/2 -translate-x-1/2 bg-black opacity-75 rounded-xl
               ${isFullscreen ? "fixed z-100" : "absolute z-10"}`}
           >
             {images.map((src, index) => (
               <span
                 key={index}
-                className={`h-2 aspect-square rounded-full opacity-75 transition-all duration-500 ${
+                className={`h-1.5 aspect-square rounded-full opacity-75 transition-all duration-500 ${
                   currentSlide - 1 == index ? "bg-white" : "bg-gray-500"
                 }`}
               ></span>
